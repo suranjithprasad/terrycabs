@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Terry Cabs & Rent A Car</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <style>
+    .highlight {
+      background-color: #f8f9fa;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .highlight h3 {
+      color: #007bff;
+    }
+
+    .highlight-success {
+      background-color: #c3e6cb;
+    }
+
+    .highlight-danger {
+      background-color: #f8d7da;
+    }
+
+    .output-section {
+      background-color: #000;
+      padding: 10px;
+      margin-top: 20px;
+    }
+    .image-cell img {
+      max-width: 200px; /* Adjust the width as needed */
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="index.html">Welcome to Kegalle</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="about.html">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="map.html">Map</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="gallery.html">Gallery</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+
+
+  <header>
+    <div class="jumbotron jumbotron-fluid bg-primary text-white">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-7 mx-auto">
+            <h1 class="display-4 font-weight-bold">Rent from Terry Cabs</h1>
+            <h3 lang="si" class="display-6 font-weight-bold">නිදහසේ ගමනක් යන්න</h3>
+            <h3 class="display-6">Best Car Rent Service from Kegalle</h3>
+            <br><br>
+            <form id="order-form" onsubmit="event.preventDefault(); submitForm();">
+              <div class="form-group">
+                <label for="yourname">Your Name</label>
+                <input type="text" class="form-control" id="yourname" placeholder="Your Name" required>
+              </div>
+              <div class="form-group">
+                <label for="contactnumber">Contact Number</label>
+                <input type="text" class="form-control" id="contactnumber" placeholder="Contact Number" required>
+              </div>
+              <div class="form-group">
+                <label for="timeperiod">How Many Days</label>
+                <select class="form-control" id="timeperiod" required>
+                  <option value="1">1 day</option>
+                  <option value="2">2 days</option>
+                  <option value="3">3 days</option>
+                  <option value="4">4 days</option>
+                  <option value="5">5 days</option>
+                  <!-- Add more options as needed -->
+                </select>
+              </div>
+
+              <button type="submit" class="btn btn-success btn-lg">Order Now</button>
+            </form>
+
+            <div id="cost-section" class="output-section mt-3" style="display: none;"></div>
+            <div id="cost-section2" class="output-section mt-3" style="display: none;"></div>
+            <div id="cost-section3" class="output-section mt-3" style="display: none;" lang="si"></div>
+            <p></p>
+            <div id="button-container" style="display: none;"></div>
+          </div>
+          <div class="col-md-5 d-flex justify-content-center align-items-center">
+            <img src="images/alto.jpg" class="img-fluid" alt="Terry Cabs & Rent A Car" style="max-height: 400px;">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function submitForm() {
+        // Get form input values
+        var yourName = document.getElementById("yourname").value;
+        var contactNumber = document.getElementById("contactnumber").value;
+        var timePeriod = document.getElementById("timeperiod").value;
+
+        // Calculate the cost based on the selected number of days
+        var cost = calculateCost(timePeriod);
+
+        // Display the cost in the designated section
+        document.getElementById("cost-section").innerHTML = "Total Cost: Rs " + cost;
+        document.getElementById("cost-section2").innerHTML = "If you agree - Send following documents- ID copy | Driving license copy | GS Certificate or utility bill copy | GS certificate not grant need gs area name";
+        document.getElementById("cost-section3").innerHTML = "පහත ලේඛන යවන්න- හැඳුනුම්පත පිටපත | රියදුරු බලපත්‍ර පිටපත | GS සහතිකය හෝ උපයෝගිතා බිල්පත් පිටපත | GS සහතිකය ප්‍රදානය නොකෙරේ gs ප්‍රදේශයේ නම අවශ්‍ය වේ";
+        // Generate the WhatsApp button with form inputs
+        generateWhatsAppButton(yourName, contactNumber, timePeriod, cost);
+
+        // Show the cost and button
+        document.getElementById("cost-section").style.display = "block";
+        document.getElementById("cost-section2").style.display = "block";
+        document.getElementById("cost-section3").style.display = "block";
+        document.getElementById("button-container").style.display = "block";
+      }
+
+      function calculateCost(timePeriod) {
+        // Define your pricing logic based on the number of days
+        // You can adjust the pricing structure as needed
+        var baseCostPerDay = 5000;
+        var cost = baseCostPerDay * timePeriod;
+        return cost;
+      }
+
+      function generateWhatsAppButton(yourName, contactNumber, timePeriod, cost) {
+        var whatsappNumber = "+94765662922"; // Replace with the desired phone number
+        var message = "Hello, I would like to place an order for " + timePeriod + " days. The total cost is Rs" + cost + ". My name is " + yourName + " and my contact number is " + contactNumber + ".";
+        var whatsappURL = "https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(message);
+
+        // Create the WhatsApp button
+        var whatsappButton = document.createElement("a");
+        whatsappButton.setAttribute("href", whatsappURL);
+        whatsappButton.setAttribute("target", "_blank");
+        whatsappButton.classList.add("btn", "btn-lg");
+        whatsappButton.style.backgroundColor = "green"; // Set the button background color to green
+        whatsappButton.style.color = "white"; // Set the text color to white
+        whatsappButton.innerText = "Submit via WhatsApp 076-5662922";
+
+        // Add the button to the page
+        var buttonContainer = document.getElementById("button-container");
+        buttonContainer.innerHTML = ""; // Clear any existing button
+        buttonContainer.appendChild(whatsappButton);
+      }
+    </script>
+  </header>
+
+
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+  
+            <!-- Your content here.................................................................................. -->
+            <h3 class="display-6 font-weight-bold">What kind of Vehicle do you want? <lang=si>ඔබට අවශ්‍ය කුමන ආකාරයේ වාහනයක්ද?</lang></h3>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Car Type</th>
+                  <th>Car Image</th>
+                  <th>Availability</th>
+                  <th>Ordering</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Alto</td>
+                  <td class="image-cell"><img src="images/alto.png" alt="alto" class="img-fluid"></td>
+                  <td>Available<lang="si"> ඇත </lang></td>
+                  <th>Order</th>
+                </tr>
+                
+                <!-- Add more rows as needed -->
+              </tbody>
+            </table>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+  <footer class="bg-dark text-light" style="margin-top: 20px;">
+    <div class="container py-4">
+      <div class="row">
+        <div class="col-md-6 offset-md-3 text-center">
+          <h4><b>Founder:</b> Mr. Dimuthu Karunarathna</h4>
+          <p><b>Tel:</b> 0765662922</p>
+          <p>&copy; 2023 TerryCabs.com. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+
+
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

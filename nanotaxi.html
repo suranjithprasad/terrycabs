@@ -5,8 +5,6 @@
   <meta charset="UTF-8">
   <title>Terry Cabs & Rent A Car</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-  <!-- Include Animate.css -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
   <style>
     .highlight {
       background-color: #f8f9fa;
@@ -65,95 +63,121 @@
 
   <header>
     <div class="jumbotron jumbotron-fluid bg-primary text-white">
-      <div class="container d-flex align-items-center">
+      <div class="container">
         <div class="row">
-          <div class="col-md-7 mx-auto">
-            <br>
-            <h1 class="display-4 font-weight-bold animate__animated animate__bounceIn">Terry Cabs & Rent a Car</h1>
-            <h3 class="display-6">Your Travel Partner</h3>
+          <div class="col-md-7">
+            <h1 class="display-4 font-weight-bold">Nano Taxi Kegalle</h1>
+            <h3 class="display-6">Best Taxi Service from Kegalle</h3>
             <br><br>
-            <a href="nanotaxi.html"><button class="btn btn-success btn-lg">Nano Taxi Kegalle</button></a>&nbsp;
-            <a href="rentcar.html"><button class="btn btn-success btn-lg">Rent a Car without Driver</button></a>
+            <form id="order-form">
+              <div class="form-group">
+                <label for="begin-place">Begin Place</label>
+                <input type="text" class="form-control" id="begin-place" placeholder="Kegalle" required pattern=".*\S+.*">
+                <div class="invalid-feedback">Please input a begin place.</div>
+              </div>
+              <div class="form-group">
+                <label for="end-place">End Place</label>
+                <input type="text" class="form-control" id="end-place" placeholder="Enter end place" required pattern=".*\S+.*">
+                <div class="invalid-feedback">Please input an end place.</div>
+              </div>
+              <div class="form-group">
+                <label for="km">KM</label>
+                <input type="text" class="form-control" id="km" placeholder="Enter KM" required pattern=".*\S+.*">
+                <div class="invalid-feedback">Please input the number of kilometers.</div>
+              </div>
+              <div class="form-group">
+                <label for="service-type">Service Type</label>
+                <select class="form-control" id="service-type" required>
+                  <option value="">Choose an option</option>
+                  <option>Drop</option>
+                  <option>Come back</option>
+                  <option>Pickup</option>
+                </select>
+                <div class="invalid-feedback">Please select a service type.</div>
+              </div>
+              <div class="form-group">
+                <label for="vehicle">Choose a Vehicle</label>
+                <select class="form-control" id="vehicle" required>
+                  <option value="">Choose an option</option>
+                  <option>Nano</option>
+                  <option>Alto</option>
+                  <option>Buddy Van</option>
+                  <option>Prius</option>
+                  <option>Primio</option>
+                </select>
+                <div class="invalid-feedback">Please select a vehicle.</div>
+              </div>
+              <button type="submit" class="btn btn-success btn-lg">Order Now</button>
+            </form>
+            
+            <div id="output-section" class="output-section mt-3"></div>
           </div>
-
           <div class="col-md-5 d-flex justify-content-center align-items-center">
-            <img src="images/home2.png" class="img-fluid" alt="Terry Cabs & Rent A Car" style="max-height: 400px;">
+            <img src="images/nano.gif" class="img-fluid" alt="Terry Cabs & Rent A Car">
           </div>
-
         </div>
       </div>
     </div>
   </header>
+  
 
   <div class="container-fluid">
     <div class="row">
-      <div class="col-6">
+      <div class="col-12">
         <div class="card">
           <div class="card-body">
-            <!-- Nano Taxi.................................................................................... -->
-            <h3 class="card-title" style="font-weight: bold; text-align:center;">Nano Taxi Kegalle</h3>
-            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-              <img src="images/nano.jpg" class="card-img-top" />
-              <a href="#!">
-                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-              </a>
-            </div>
-            <p class="card-text text-start text-justify">
-              <br>
-              <lang="si">අපගේ ප්‍රමුඛතම කුලී රථ සේවාව සමඟ පහසුව සහ විශ්වසනීයත්වය අත්විඳින්න. 
-                වෘත්තීය සහ ආචාරශීලී රියදුරන් විසින් මෙහෙයවනු ලබන අපගේ නවීන ඇණිය ගුවන් තොටුපළ මාරුවීම්, 
-                නගර ගවේෂණය සහ විශේෂ සිදුවීම් සඳහා 24/7 ලබා ගත හැකිය. 
-                ඔබේ ආරක්ෂාවට සහ තෘප්තියට ප්‍රමුඛත්වය දෙමින් පහසුවෙන් මාර්ගගතව වෙන්කරවාගෙන 
-                ආතතියෙන් තොර ගමනක් භුක්ති විඳින්න. ඔබට යා යුතු තැනට ඔබව රැගෙන යන අපගේ 
-                විශ්වාසදායී කුලී රථ සේවාවේ වෙනස සොයා ගන්න.</lang><br>
-              Experience convenience and reliability with our premier taxi service. Our modern fleet, driven by
-              professional and courteous drivers, provides 24/7 availability for airport transfers, city exploration,
-              and special events. Book easily online and enjoy a stress-free ride, prioritizing your safety and
-              satisfaction. Discover the difference of our trusted taxi service, taking you where you need to go.
-            </p>
-            <a href="nanotaxi.html" class="btn btn-primary">Get a Taxi</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-6">
-        <div class="card">
-          <div class="card-body">
-            <!-- rent a car.................................................................................... -->
-            <h3 class="card-title" style="font-weight: bold; text-align:center;">Rent a Car</h3>
-            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-              <img src="images/alto.png" class="card-img-top" />
-              <a href="#!">
-                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-              </a>
-            </div>
-            <p class="card-text text-start text-justify">
-              <br>
-              <lang="si">අපගේ විශ්වාසනීය මෝටර් රථ කුලියට දීමේ සේවාවන් සමඟින් ඔබේ නියමයන් මත ගවේෂණය 
-                කිරීමේ නිදහස අගුළු හරින්න. සංයුක්ත මෝටර් රථවල සිට ඉඩකඩ සහිත SUV රථ දක්වා, 
-                අපි ඔබේ අවශ්‍යතාවලට සරිලන පරිදි විවිධ වාහන සමූහයක් පිරිනමන්නෙමු. නම්‍යශීලී කුලී විකල්ප, 
-                තරඟකාරී ගාස්තු සහ සුවිශේෂී පාරිභෝගික සේවාව සමඟින්, අපි ඔබේ ගමන බාධාවකින් තොරව සහ 
-                ප්‍රීතිමත් කරන්නෙමු. අදම ඔබේ මෝටර් රථය වෙන්කරවාගෙන අමතක නොවන වික්‍රමාන්විතයන් ආරම්භ කරන්න.</lang><br>
-              Unlock the freedom of exploring on your terms with our reliable car rental services. From compact cars to
-              spacious SUVs, we offer a diverse fleet to suit your needs. With flexible rental options, competitive
-              rates, and exceptional customer service, we make your journey seamless and enjoyable. Book your car today
-              and embark on unforgettable adventures.
-            </p>
-            <a href="rentcar.html" class="btn btn-primary">Rent a Car</a>
+  
+            <!-- Your content here.................................................................................. -->
+            <h3 class="display-6 font-weight-bold">What kind of Vehicle do you want? <lang=si>ඔබට අවශ්‍ය කුමන ආකාරයේ වාහනයක්ද?</lang></h3>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Car Type</th>
+                  <th>Car Image</th>
+                  <th>Availability</th>
+                  <th>Ordering</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Buddy Van</td>
+                  <td class="image-cell"><img src="images/buddyvan.jpeg" alt="Sedan" class="small-img"></td>
+                  <td>Available</td>
+                  <th>Order</th>
+                </tr>
+                <tr>
+                  <td>Alto</td>
+                  <td class="image-cell"><img src="images/alto.jpg" alt="alto" class="img-fluid"></td>
+                  <td>Not Available</td>
+                  <th>Order</th>
+                </tr>
+                <tr>
+                  <td>Nano</td>
+                  <td class="image-cell"><img src="images/nano.jpg" alt="Hatchback" class="img-fluid"></td>
+                  <td>Available</td>
+                  <th>Order</th>
+                </tr>
+                <tr>
+                  <td>Prius</td>
+                  <td class="image-cell"><img src="images/prius.jpeg" alt="Hatchback" class="img-fluid"></td>
+                  <td>Available</td>
+                  <th>Order</th>
+                </tr>
+                <tr>
+                  <td>Primio</td>
+                  <td class="image-cell"><img src="images/primio.jpeg" alt="Hatchback" class="img-fluid"></td>
+                  <td>Available</td>
+                  <th>Order</th>
+                </tr>
+                <!-- Add more rows as needed -->
+              </tbody>
+            </table>
+  
           </div>
         </div>
       </div>
     </div>
   </div>
-
- 
-  
-  <style>
-    .image-cell img {
-      max-width: 100px; /* Adjust the width as needed */
-    }
-  </style>
-  
   
   
 
